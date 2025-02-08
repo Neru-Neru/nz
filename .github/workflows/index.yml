@@ -8,6 +8,8 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.50.1-noble
 
     steps:
       - name: checkout
@@ -17,9 +19,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-
-      - name: setup Playwright
-        run: npx playwright install --with-deps
 
       - name: install dependencies
         run: npm install
