@@ -7,24 +7,24 @@ on:
 
 jobs:
   scrape:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: checkout
-      uses: actions/checkout@v4
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
 
-    - name: setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
+      - name: setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    - name: setup Playwright
-      run: npx playwright install --with-deps
+      - name: setup Playwright
+        run: npx playwright install --with-deps
 
-    - name: install dependencies
-      run: npm install
+      - name: install dependencies
+        run: npm install
 
-    - name: run
-      env:
-        WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
-      run: npx tsx index.ts
+      - name: run
+        env:
+          WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        run: npx tsx index.ts
